@@ -1,3 +1,5 @@
-libasm/*.o
+**/*.o
+*.o
 libasm/*.a
 libasm/libasm
+test
