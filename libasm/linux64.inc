@@ -9,6 +9,7 @@
 %define		SUCCESS		0
 %define		FAILURE 	1
 
+
 %macro		exit 1
 	mov rax, SYS_EXIT
 	mov rdi, %1

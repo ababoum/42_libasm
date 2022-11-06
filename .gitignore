@@ -1,3 +1,3 @@
-*.o
-libasm
-libasm.a
+libasm/*.o
+libasm/*.a
+libasm/libasm
