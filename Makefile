@@ -6,13 +6,13 @@
 #    By: mababou <mababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 21:14:07 by mababou           #+#    #+#              #
-#    Updated: 2022/11/04 21:52:57 by mababou          ###   ########.fr        #
+#    Updated: 2022/11/06 17:19:36 by mababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm
 
-SRCS = hello.s
+SRCS = args.s
 
 OBJS = ${SRCS:.s=.o}
 
