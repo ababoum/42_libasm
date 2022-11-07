@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   libasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mababou <mababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 18:32:47 by mababou           #+#    #+#             */
-/*   Updated: 2022/11/07 12:27:31 by mababou          ###   ########.fr       */
+/*   Created: 2022/11/07 11:01:39 by mababou           #+#    #+#             */
+/*   Updated: 2022/11/07 14:54:21 by mababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include "libasm/libasm.h"
+#ifndef LIBASM_H
+#define LIBASM_H
 
-int main(void)
-{
-	int c = ft_strlen("bonjour");
-	printf("%d\n", c);
-}
+#include <sys/types.h>
+
+size_t ft_strlen(const char *s);
+char *ft_strcpy(char *dest, const char *src);
+int ft_strcmp(const char *s1, const char *s2);
+ssize_t ft_write(int fd, const void *buf, size_t count);
+ssize_t ft_read(int fd, void *buf, size_t count);
+char *ft_strdup(const char *s);
+
+#endif

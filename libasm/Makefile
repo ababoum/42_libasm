@@ -6,34 +6,34 @@
 #    By: mababou <mababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 21:14:07 by mababou           #+#    #+#              #
-#    Updated: 2022/11/06 17:19:36 by mababou          ###   ########.fr        #
+#    Updated: 2022/11/07 11:57:13 by mababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libasm
+NAME = libasm.a
 
-SRCS = args.s
+SRCS = ft_strlen.s
 
 OBJS = ${SRCS:.s=.o}
 
 # compilation parameters
 ASM		= nasm
-ASFLAGS	= -f elf64
-LD 		= ld
+ASFLAGS	= -f elf64 -g
+LD 		= ar rcs
 # LDFLAGS	= -s
 RM		= rm -rf
 
 
 # compilation
 %.o: %.s
-	$(ASM) $(ASFLAGS) $< -o $@
+	$(ASM) $(ASFLAGS) $<
 
 
 # rules
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-	$(LD) $(LDFLAGS) $(OBJS) -o $(NAME)
+	$(LD) $(LDFLAGS) $(NAME) $(OBJS)
 
 re:			fclean all
 

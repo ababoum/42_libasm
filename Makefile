@@ -13,7 +13,8 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 SRCS		= main.c
 
-INCLUDES	= 
+INCLUDES	= libasm/libasm.h
+LIBASM 		= libasm/libasm.a
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -21,18 +22,23 @@ NAME		= test
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS) $(INCLUDES)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+libasm:
+		make -C ./libasm
+
+$(NAME): libasm $(OBJS) $(INCLUDES) 
+		$(CC) $(CFLAGS) $(OBJS) $(LIBASM) -o $(NAME)
 		@echo "$(F_GREEN)$(F_BOLD) $(NAME) executable is compiled and ready.$(F_NONE)"
 
 clean:
+		make -C ./libasm clean
 		@rm -f $(OBJS)
 		@echo "$(F_CYAN)$(F_BOLD) .o files successfully deleted.$(F_NONE)"
 
 fclean:	clean
+		make -C ./libasm fclean
 		@rm -f $(NAME)
 		@echo "$(F_CYAN)$(F_BOLD) $(NAME) executable successfully deleted.$(F_NONE)"
 
 re:	fclean $(NAME)
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re libasm

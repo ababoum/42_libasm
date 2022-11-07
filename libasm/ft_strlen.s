@@ -1,25 +1,22 @@
 %include "linux64.inc"
 
+global ft_strlen
+
 section .text
-	global ft_strlen
 
 
 ft_strlen:
-	
-	pop		rax		; retrieve the argument
-	mov		rbx, 0	; counter
+	mov		rdi, 0		; counter set to 0
 
 _countLoop:
 	mov		cl, [rax]	; test the string's first byte
 	cmp 	cl, 0
 	jne		_increment
-
 	; end of loop
-	push	rbx
+	mov		rax, rdi
 	ret
 
 _increment:
 	inc		rax
-	inc		rbx
+	inc		rdi
 	jmp		_countLoop
-
