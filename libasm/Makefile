@@ -6,13 +6,14 @@
 #    By: mababou <mababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 21:14:07 by mababou           #+#    #+#              #
-#    Updated: 2022/11/07 11:57:13 by mababou          ###   ########.fr        #
+#    Updated: 2022/11/07 15:14:00 by mababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm.a
 
-SRCS = ft_strlen.s
+SRCS = ft_strlen.s \
+		ft_strcpy.s
 
 OBJS = ${SRCS:.s=.o}
 
@@ -20,7 +21,7 @@ OBJS = ${SRCS:.s=.o}
 ASM		= nasm
 ASFLAGS	= -f elf64 -g
 LD 		= ar rcs
-# LDFLAGS	= -s
+LDFLAGS	= -s
 RM		= rm -rf
 
 

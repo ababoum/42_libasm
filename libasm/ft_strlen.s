@@ -4,7 +4,6 @@ global ft_strlen
 
 section .text
 
-
 ft_strlen:
 	mov		rdi, 0		; counter set to 0
 
