@@ -6,14 +6,14 @@ section .text
 
 ft_strcpy:
 
-	mov		rcx, 0 ; counter
+	mov		rcx, 0 			;counter
 _copyLoop:
-	mov		[rax + rcx], dil
-	cmp		dil, 0
+	mov		[rdi + rcx] , sil
+	cmp		BYTE [rsi] , 0
 	jne		_increment
 	ret
 
 _increment:
 	inc		rcx
-	inc		rdi
+	inc		rsi
 	jmp		_copyLoop
