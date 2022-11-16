@@ -8,6 +8,7 @@ Note: the info below is applicable to 64-bit architecture systems
 - **rdi**: first argument in the syscall
 - **rsi**: second argument in the syscall
 - **rdx**: third argument in the syscall
+- *etc.*
 
 To use sliced parts of the register:
 
@@ -114,6 +115,33 @@ Use the symbol '%%' instead of '_' inside the macro body to create a local label
 
 When the program is executed, the arguments are automatically loaded onto the stack. The top item is the number of arguments.
 
+## FUNCTION AND CALLING STANDARDS
+
+|arch|syscall NR|return|arg0|arg1|arg2|arg3|arg4|arg5|
+|----|----------|------|----|----|----|----|----|----|
+|x86 |eax       |eax   |ebx |ecx |edx |esi |edi |ebp |
+|x86_64|rax|rax|rdi|rsi|rdx|r10|r8|r9|
+
+## x64 REGISTERS
+
+|8-byte register|Bytes 0-3|Bytes 0-1|Byte 0|
+|---------------|---------|---------|------|
+|%rax|%eax|%ax|%al|
+|%rcx|%ecx|%cx|%cl|
+|%rdx|%edx|%dx|%dl|
+|%rbx|%ebx|%bx|%bl|
+|%rsi|%esi|%si|%sil|
+|%rdi|%edi|%di|%dil|
+|%rsp|%esp|%sp|%spl|
+|%rbp|%ebp|%bp|%bpl|
+|%r8|%r8d|%r8w|%r8b|
+|%r9|%r9d|%r9w|%r9b|
+|%r10|%r10d|%r10w|%r10b|
+|%r11|%r11d|%r11w|%r11b|
+|%r12|%r12d|%r12w|%r12b|
+|%r13|%r13d|%r13w|%r13b|
+|%r14|%r14d|%r14w|%r14b|
+|%r15|%r15d|%r15w|%r15b|
 
 <br><br><br>
 

@@ -20,6 +20,7 @@
 %macro		putstr 1
 	; input: rax as pointer to string
 	; output: print string at rax
+
 	mov		rax, %1
 	mov		rbx, 0
 %%print:
@@ -40,6 +41,7 @@
 	mov		rsi, rcx
 	mov		rdx, rbx
 	syscall
+
 %endmacro
 
 
@@ -49,6 +51,7 @@ section .bss
 	digitSpacePos	resb 8 ; used to follow the cursor over the number being printed
 
 %macro	putnbr 1
+	push	rax
 	mov		rax, %1
 
 %%printNumber:
@@ -90,4 +93,5 @@ section .bss
 
 	cmp		rcx, digitSpace ;initial pointer to the number
 	jge		%%printRAXLoop2
+	pop		rax
 %endmacro
