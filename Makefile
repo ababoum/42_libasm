@@ -7,7 +7,7 @@ F_GREEN		= \033[32m
 F_CYAN		= \033[36m
 F_BLUE		= \033[34m
 
-CC			= @gcc
+CC			= @cc
 
 CFLAGS		= -Wall -Wextra -Werror -g
 

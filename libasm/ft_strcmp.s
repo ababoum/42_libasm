@@ -9,6 +9,8 @@ ft_strcmp:
 
 
 compare_loop:
+	xor		r8b, r8b
+	xor		r9b, r9b
 	mov		r8b, BYTE [rdi + rcx]	; store byte from s1
 	mov		r9b, BYTE [rsi + rcx]	; store byte from s2
 	cmp		r8b, r9b

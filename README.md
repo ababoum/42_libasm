@@ -147,3 +147,5 @@ When the program is executed, the arguments are automatically loaded onto the st
 
 ----------
 Notes taken with the help of the videos in the playlist of kupala available [here](https://www.youtube.com/watch?v=VQAKkuLL31g&list=PLetF-YjXm-sCH6FrTz4AQhfH6INDQvQSn&index=1)
+
+More information on x86 Unix Calling convention [here](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)

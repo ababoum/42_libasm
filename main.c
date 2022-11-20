@@ -6,7 +6,7 @@
 /*   By: mababou <mababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:32:47 by mababou           #+#    #+#             */
-/*   Updated: 2022/11/16 16:08:21 by mababou          ###   ########.fr       */
+/*   Updated: 2022/11/20 16:52:04 by mababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,128 +14,168 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include "libasm/libasm.h"
 
 int main(void)
 {
 	// {
-	// 	printf("=========STRLEN=========\n");
-	// 	printf("=====LIBASM=====\n");
+	// 	printf("============STRLEN============\n");
+	// 	printf("Test: bonjour\n");
 	// 	{
-	// 		printf("Test: bonjour\n");
-	// 		int c = ft_strlen("bonjour");
-	// 		printf("%d\n", c);
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strlen("bonjour"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strlen("bonjour"));
 	// 	}
-	// 	printf("======LIBC======\n");
+	// 	printf("Test: newline\n");
 	// 	{
-	// 		printf("Test: bonjour\n");
-	// 		int c = strlen("bonjour");
-	// 		printf("%d\n", c);
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strlen("\n"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strlen("\n"));
 	// 	}
-	// 	printf("=====LIBASM=====\n");
+	// 	printf("Test: empty string\n");
 	// 	{
-	// 		printf("Test: newline\n");
-	// 		int c = ft_strlen("\n");
-	// 		printf("%d\n", c);
-	// 	}
-	// 	printf("======LIBC======\n");
-	// 	{
-	// 		printf("Test: newline\n");
-	// 		int c = strlen("\n");
-	// 		printf("%d\n", c);
-	// 	}
-	// 	printf("=====LIBASM=====\n");
-	// 	{
-	// 		printf("Test: empty string\n");
-	// 		int c = ft_strlen("");
-	// 		printf("%d\n", c);
-	// 	}
-	// 	printf("======LIBC======\n");
-	// 	{
-	// 		printf("Test: empty string\n");
-	// 		int c = strlen("");
-	// 		printf("%d\n", c);
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strlen(""));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strlen(""));
 	// 	}
 	// }
 	// {
-	// 	printf("=========STRCPY=========\n");
-	// 	printf("=====LIBASM=====\n");
+	// 	printf("============STRCPY============\n");
+	// 	printf("Test: bonjour\n");
 	// 	{
+	// 		printf("=====LIBASM=====\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: bonjour\n");
 	// 		printf("%s\n", ft_strcpy(dest, "bonjour"));
 	// 		printf("%s\n", dest);
 	// 		free(dest);
 	// 	}
-	// 	printf("======LIBC======\n");
 	// 	{
+	// 		printf("======LIBC======\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: bonjour\n");
 	// 		printf("%s\n", strcpy(dest, "bonjour"));
 	// 		printf("%s\n", dest);
 	// 		free(dest);
 	// 	}
-	// 	printf("=====LIBASM=====\n");
+	// 	printf("Test: empty\n");
 	// 	{
+	// 		printf("=====LIBASM=====\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: empty\n");
 	// 		printf("'%s'\n", ft_strcpy(dest, ""));
 	// 		printf("'%s'\n", dest);
 	// 		free(dest);
 	// 	}
-	// 	printf("======LIBC======\n");
 	// 	{
+	// 		printf("======LIBC======\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: empty\n");
 	// 		printf("'%s'\n", strcpy(dest, ""));
 	// 		printf("'%s'\n", dest);
 	// 		free(dest);
 	// 	}
-	// 	printf("=====LIBASM=====\n");
+	// 	printf("Test: héhé\n");
 	// 	{
+	// 		printf("=====LIBASM=====\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: héhé\n");
 	// 		printf("%s\n", ft_strcpy(dest, "héhé"));
 	// 		printf("%s\n", dest);
 	// 		free(dest);
 	// 	}
-	// 	printf("======LIBC======\n");
 	// 	{
+	// 		printf("======LIBC======\n");
 	// 		char *dest = calloc(10, 1);
 	// 		memset(dest, 'a', 9);
-	// 		printf("Test: héhé\n");
 	// 		printf("%s\n", strcpy(dest, "héhé"));
 	// 		printf("%s\n", dest);
 	// 		free(dest);
 	// 	}
 	// }
+	// {
+	// 	printf("============STRCMP============\n");
+	// 	printf("Test: aaaa vs aaaa\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("aaaa", "aaaa"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("aaaa", "aaaa"));
+	// 	}
+
+	// 	printf("Test: aaaa vs bbbb\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("aaaa", "bbbb"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("aaaa", "bbbb"));
+	// 	}
+	// 	printf("Test: 1234 vs 12345\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("1234", "12345"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("1234", "12345"));
+	// 	}
+	// 	printf("Test: 12345 vs 1234\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("12345", "1234"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("12345", "1234"));
+	// 	}
+	// 	printf("Test: empty vs empty\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("", ""));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("", ""));
+	// 	}
+	// 	printf("Test: $$ vs $/\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf("%d\n", ft_strcmp("$$", "$/"));
+	// 		printf("======LIBC======\n");
+	// 		printf("%d\n", strcmp("$$", "$/"));
+	// 	}
+	// }
 	{
-		printf("=========STRCMP=========\n");
-		printf("=====LIBASM=====\n");
+		printf("============WRITE============\n");
+		printf(">> Test: bonjour STDOUT\n");
 		{
-			printf("Test: aaaa vs aaaa\n");
-			printf("%d\n", ft_strcmp("aaaa", "aaaa"));
+			printf("=====LIBASM=====\n");
+			printf(" %zd\n", ft_write(1, "bonjour", 7));
+			printf("======LIBC======\n");
+			printf(" %zd\n", write(1, "bonjour", 7));
 		}
-		printf("======LIBC======\n");
+		printf(">> Test: bonjour STDERR\n");
 		{
-			printf("Test: aaaa vs aaaa\n");
-			printf("%d\n", strcmp("aaaa", "aaaa"));
+			printf("=====LIBASM=====\n");
+			printf(" %zd\n", ft_write(2, "bonjour", 7));
+			printf("======LIBC======\n");
+			printf(" %zd\n", write(2, "bonjour", 7));
 		}
-		printf("=========STRCMP=========\n");
-		printf("=====LIBASM=====\n");
+		printf(">> Test: write on inexistant fd\n");
 		{
-			printf("Test: aaaa vs bbbb\n");
-			printf("%d\n", ft_strcmp("aaaa", "bbbb"));
+			printf("=====LIBASM=====\n");
+			printf(" %zd\n", ft_write(11, "bonjour", 7));
+			perror("FT_WRITE");
+			printf("======LIBC======\n");
+			printf(" %zd\n", write(11, "bonjour", 7));
+			perror("WRITE");
 		}
-		printf("======LIBC======\n");
+		printf(">> Test: wrong parameters\n");
 		{
-			printf("Test: aaaa vs bbbb\n");
-			printf("%d\n", strcmp("aaaa", "bbbb"));
+			printf("=====LIBASM=====\n");
+			printf(" %zd\n", ft_write(1, "bonjour", -1));
+			perror("FT_WRITE");
+			printf("======LIBC======\n");
+			printf(" %zd\n", write(1, "bonjour", -1));
+			perror("WRITE");
 		}
 	}
 }
