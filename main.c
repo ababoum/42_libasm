@@ -6,7 +6,7 @@
 /*   By: mababou <mababou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:32:47 by mababou           #+#    #+#             */
-/*   Updated: 2022/11/20 16:52:04 by mababou          ###   ########.fr       */
+/*   Updated: 2022/11/20 17:10:44 by mababou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,39 +143,98 @@ int main(void)
 	// 		printf("%d\n", strcmp("$$", "$/"));
 	// 	}
 	// }
+	// {
+	// 	printf("============WRITE============\n");
+	// 	printf(">> Test: bonjour STDOUT\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf(" %zd\n", ft_write(1, "bonjour", 7));
+	// 		printf("======LIBC======\n");
+	// 		printf(" %zd\n", write(1, "bonjour", 7));
+	// 	}
+	// 	printf(">> Test: bonjour STDERR\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf(" %zd\n", ft_write(2, "bonjour", 7));
+	// 		printf("======LIBC======\n");
+	// 		printf(" %zd\n", write(2, "bonjour", 7));
+	// 	}
+	// 	printf(">> Test: write on inexistant fd\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf(" %zd\n", ft_write(11, "bonjour", 7));
+	// 		perror("FT_WRITE");
+	// 		printf("======LIBC======\n");
+	// 		printf(" %zd\n", write(11, "bonjour", 7));
+	// 		perror("WRITE");
+	// 	}
+	// 	printf(">> Test: wrong parameters\n");
+	// 	{
+	// 		printf("=====LIBASM=====\n");
+	// 		printf(" %zd\n", ft_write(1, "bonjour", -1));
+	// 		perror("FT_WRITE");
+	// 		printf("======LIBC======\n");
+	// 		printf(" %zd\n", write(1, "bonjour", -1));
+	// 		perror("WRITE");
+	// 	}
+	// }
 	{
-		printf("============WRITE============\n");
-		printf(">> Test: bonjour STDOUT\n");
+		printf("============READ============\n");
+		printf(">> Test: from file\n");
 		{
+			char	buf[1000] = {0};
+			int fd = open("./example_input", O_RDONLY);
 			printf("=====LIBASM=====\n");
-			printf(" %zd\n", ft_write(1, "bonjour", 7));
-			printf("======LIBC======\n");
-			printf(" %zd\n", write(1, "bonjour", 7));
+			printf(" %zd\n", ft_read(fd, buf, 10));
+			printf("%s\n", buf);
+			close(fd);
 		}
-		printf(">> Test: bonjour STDERR\n");
 		{
-			printf("=====LIBASM=====\n");
-			printf(" %zd\n", ft_write(2, "bonjour", 7));
+			char	buf[1000] = {0};
+			int fd = open("./example_input", O_RDONLY);
 			printf("======LIBC======\n");
-			printf(" %zd\n", write(2, "bonjour", 7));
+			printf(" %zd\n", read(fd, buf, 10));
+			printf("%s\n", buf);
+			memset(buf, 0, 1000);
+			close(fd);
 		}
-		printf(">> Test: write on inexistant fd\n");
+		// printf(">> Test: from STDIN\n");
+		// {
+		// 	char	buf[1000] = {0};
+		// 	int fd = open("./example_input", O_RDONLY);
+		// 	printf("=====LIBASM=====\n");
+		// 	printf(" %zd\n", ft_read(0, buf, 10));
+		// 	printf("%s\n", buf);
+		// 	close(fd);
+		// }
+		// {
+		// 	char	buf[1000] = {0};
+		// 	int fd = open("./example_input", O_RDONLY);
+		// 	printf("======LIBC======\n");
+		// 	printf(" %zd\n", read(0, buf, 10));
+		// 	printf("%s\n", buf);
+		// 	memset(buf, 0, 1000);
+		// 	close(fd);
+		// }
+		printf(">> Test: wrong file descriptor\n");
 		{
+			char	buf[1000] = {0};
+			int fd = open("./example_input", O_RDONLY);
 			printf("=====LIBASM=====\n");
-			printf(" %zd\n", ft_write(11, "bonjour", 7));
-			perror("FT_WRITE");
-			printf("======LIBC======\n");
-			printf(" %zd\n", write(11, "bonjour", 7));
-			perror("WRITE");
+			printf(" %zd\n", ft_read(100, buf, 10));
+			printf("%s\n", buf);
+			close(fd);
+			perror("FT_READ");
 		}
-		printf(">> Test: wrong parameters\n");
 		{
-			printf("=====LIBASM=====\n");
-			printf(" %zd\n", ft_write(1, "bonjour", -1));
-			perror("FT_WRITE");
+			char	buf[1000] = {0};
+			int fd = open("./example_input", O_RDONLY);
 			printf("======LIBC======\n");
-			printf(" %zd\n", write(1, "bonjour", -1));
-			perror("WRITE");
+			printf(" %zd\n", read(100, buf, 10));
+			printf("%s\n", buf);
+			memset(buf, 0, 1000);
+			close(fd);
+			perror("READ");
 		}
 	}
 }
