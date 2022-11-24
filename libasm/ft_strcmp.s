@@ -5,6 +5,9 @@ global ft_strcmp
 section .text
 
 ft_strcmp:
+	push	rcx
+	push	r8
+	push	r9
 	xor		rcx, rcx			; prepare rcx to store index
 
 
@@ -26,5 +29,8 @@ exit_block:
 	xor		rax, rax
 	movzx	rax, r8b	;moves the content of the char to a full register with a 0-extend
 	movzx	r15, r9b	;same
-	sub		rax, r15	
+	sub		rax, r15
+	pop		r9
+	pop		r8
+	pop		rcx
 	ret

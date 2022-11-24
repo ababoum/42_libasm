@@ -6,7 +6,7 @@
 #    By: mababou <mababou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 21:14:07 by mababou           #+#    #+#              #
-#    Updated: 2022/11/20 17:00:30 by mababou          ###   ########.fr        #
+#    Updated: 2022/11/24 17:57:21 by mababou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS = ft_strlen.s \
 		ft_strcpy.s \
 		ft_strcmp.s \
 		ft_write.s \
-		ft_read.s
+		ft_read.s \
+		ft_strdup.s
 
 OBJS = ${SRCS:.s=.o}
 

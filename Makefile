@@ -7,7 +7,7 @@ F_GREEN		= \033[32m
 F_CYAN		= \033[36m
 F_BLUE		= \033[34m
 
-CC			= @cc
+CC			= clang
 
 CFLAGS		= -Wall -Wextra -Werror -g
 
@@ -15,17 +15,18 @@ SRCS		= main.c
 
 INCLUDES	= libasm/libasm.h
 LIBASM 		= libasm/libasm.a
+LIBASM_FLD	= libasm
 
 OBJS		= $(SRCS:.c=.o)
 
 NAME		= test
 
-all:	$(NAME)
+all:	libasm $(NAME)
 
 libasm:
 		make -C ./libasm
 
-$(NAME): libasm $(OBJS) $(INCLUDES) 
+$(NAME): $(OBJS) $(INCLUDES) $(LIBASM)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBASM) -o $(NAME)
 		@echo "$(F_GREEN)$(F_BOLD) $(NAME) executable is compiled and ready.$(F_NONE)"
 
